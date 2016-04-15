@@ -1,0 +1,120 @@
+
+<Calculadora>:
+    #esta ID es para guardar el resultado
+    id: calculos
+    #esta es para manejar los datos de la pantalla
+    pantalla: input
+
+    BoxLayout:
+        #Boxlayout para cuadricular las teclas padding y spacing son para espaciado del borde y de mas puede cambiar valores para ir probando
+        orientation: 'vertical'
+        padding: 20
+        spacing: 15
+
+        #entrada de texto size_hit es la altura y font_size el tamaño esta todo calculado prefiero que no lo toquen
+        TextInput:
+            id: input
+            size_hint: 1, None
+            font_size: 70
+
+        #gridlayout es para orientacion row (filas) cols (columnas) si agregan botones tiene que editar aca dependiendo si quiere mas filas o mas columas
+        GridLayout:
+            rows: 4
+            cols: 4
+
+            #se definen los botones su tamaño de letra su texto y su funcion (la funcion on_pres no la toquen)
+            #como ven va de izquierda a derecha en orden osea la primera dice 7 si la cambia no pasa nada funcionara igual con el numro que pongan
+            #si quieren agregar botones solo compien 1 de ellos desde  Buttom hasta self.text y peguenlo debajo como uno mas ,  editen lo que dice Text
+            #si quieren una funcion especial como elevado o algo deberan copiar la que dice bubble bottom
+            #pueden agregar el    .    que no lo agregre y tambien pueden agregar   (   )   tiene 3 botones mas para agregar
+            #claro que si agregan botones tienes que editar las  Cols y los  Row,  le saldra desordenado solo basta como editar el orden uno a uno
+
+
+            #Aclaro Buttom es un boton  normal por defecto gris y  bubblebuttom es un boton especial con un efecto negro degradado nose como explicarlos
+            #solo le puse color a la primera background fondo y color es el texto
+            #puede copiar y pegarlo en todos para cambairlos de color o quitarlo y dejarlos por default
+            #los bbubleboton no se editan con backgroud y color  para editarlos  debe quitarle el bubble y dejarlo solo con bottom como los demas
+
+            Button:
+                background_color: [1, 1, 5, 1]
+                color: [1, 1, 1, 1]
+                font_size: 30
+                text: '7'
+                on_press: input.text += self.text 
+
+            Button:
+                font_size: 30
+                text: '8'
+                on_press: input.text += self.text
+
+            Button:
+
+                font_size: 30
+                text: '9'
+                on_press: input.text += self.text                
+        
+            BubbleButton:
+
+                font_size: 50
+                text: '+'
+                on_press: input.text += self.text
+
+            Button:
+                font_size: 30
+                text: '4'
+                on_press: input.text += self.text
+
+            Button:
+                font_size: 30
+                text: '5'
+                on_press: input.text += self.text
+
+            Button:
+                font_size: 30
+                text: '6'
+                on_press: input.text += self.text
+
+            BubbleButton:
+                font_size: 50
+                text: '-'
+                on_press: input.text += self.text
+
+            Button:
+                font_size: 30
+                text: '1'
+                on_press: input.text += self.text
+
+            Button:
+                font_size: 30
+                text: '2'
+                on_press: input.text += self.text
+
+            Button:
+                font_size: 30
+                text: '3'
+                on_press: input.text += self.text
+
+            BubbleButton:
+                font_size: 50
+                text: '*'
+                on_press: input.text += self.text
+
+            BubbleButton:
+                font_size: 50
+                text: 'CC'
+                on_press: input.text = ""
+
+            Button:
+                font_size: 30
+                text: '0'
+                on_press: input.text += self.text
+
+            BubbleButton:
+                font_size: 50
+                text: '/'
+                on_press: input.text += self.text
+
+            BubbleButton:
+                font_size: 50
+                text: '='
+                on_press: calculos.resultado(input.text)
